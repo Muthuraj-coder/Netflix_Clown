@@ -8,12 +8,16 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build
+# Injected at build time by Docker
+ARG VITE_TMDB_API_KEY
+ENV VITE_TMDB_API_KEY=$VITE_TMDB_API_KEY
 
+RUN npm run build
 
 # ---------- Stage 2: Serve ----------
 FROM nginx:alpine
 
+# Copy the build output from the builder stage to Nginx
 COPY --from=builder /app/dist /usr/share/nginx/html
 
 EXPOSE 80
