@@ -6,7 +6,7 @@ function Home() {
   return (
     <div className="home">
       <header className="home__header">
-        <h1>NETFLIX</h1>
+        <h1>RAM MUTHU FLIX</h1>
       </header>
       <MovieRow title="Trending Now" fetchUrl={requests.fetchTrending} />
       <MovieRow title="Top Rated" fetchUrl={requests.fetchTopRated} />
